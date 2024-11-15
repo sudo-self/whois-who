@@ -1,5 +1,7 @@
 
 ## Whois-Who
+
+
 1. create a new svelte project
 ```
 npx degit sveltejs/template svelte-whois
@@ -73,4 +75,4 @@ WhoisWho.png
 
 https://whois-who.vercel.app
 
-WHOIS Lookup.app
+SVELTE!
