@@ -98,30 +98,40 @@
       <h3>WHOIS data for {domain}</h3>
       <p><strong>Domain Name:</strong> {whoisData.domainName || "N/A"}</p>
       <p><strong>Registrar:</strong> {whoisData.registrarName || "N/A"}</p>
-      <p><strong>Registrar IANA ID:</strong> {whoisData.registrarIanaID || "N/A"}</p>
+      <p><strong>Registrar IANA ID:</strong> {whoisData.registrarIANAID || "N/A"}</p>
       <p><strong>Registrar WHOIS Server:</strong> {whoisData.registrarWhoisServer || "N/A"}</p>
       <p><strong>Registrar URL:</strong> <a href={whoisData.registrarURL || "#"} target="_blank">{whoisData.registrarURL || "N/A"}</a></p>
+      
       <p><strong>Created Date:</strong> {whoisData.createdDate || "N/A"}</p>
       <p><strong>Updated Date:</strong> {whoisData.updatedDate || "N/A"}</p>
       <p><strong>Expires Date:</strong> {whoisData.expiresDate || "N/A"}</p>
-      <p><strong>Domain Status:</strong> {whoisData.domainStatus || "N/A"}</p>
 
       <p><strong>Days Old:</strong> {getDaysOld(whoisData.createdDate)} days</p>
 
-      <p><strong>Country:</strong> {whoisData.registrarCountry || "N/A"}</p>
-      <p><strong>State/Province:</strong> {whoisData.registrarState || "N/A"}</p>
+      <p><strong>Registrant:</strong> {whoisData.registrant?.organization || "N/A"}</p>
+      <p><strong>Registrant State:</strong> {whoisData.registrant?.state || "N/A"}</p>
+      <p><strong>Registrant Country:</strong> {whoisData.registrant?.country || "N/A"}</p>
+
+      <p><strong>Administrative Contact:</strong> {whoisData.administrativeContact?.organization || "N/A"}</p>
+      <p><strong>Administrative Contact State:</strong> {whoisData.administrativeContact?.state || "N/A"}</p>
+      <p><strong>Administrative Contact Country:</strong> {whoisData.administrativeContact?.country || "N/A"}</p>
+
+      <p><strong>Technical Contact:</strong> {whoisData.technicalContact?.organization || "N/A"}</p>
+      <p><strong>Technical Contact State:</strong> {whoisData.technicalContact?.state || "N/A"}</p>
+      <p><strong>Technical Contact Country:</strong> {whoisData.technicalContact?.country || "N/A"}</p>
 
       <p><strong>Name Servers:</strong></p>
       <ul>
-        {#each whoisData.nameServers || [] as nameServer}
+        {#each whoisData.nameServers?.hostNames || [] as nameServer}
           <li>{nameServer}</li>
         {/each}
       </ul>
 
       <p><strong>Registrar Abuse Contact Email:</strong> {whoisData.registrarAbuseContactEmail || "N/A"}</p>
       <p><strong>Registrar Abuse Contact Phone:</strong> {whoisData.registrarAbuseContactPhone || "N/A"}</p>
-      <p><strong>Domain Contact Email:</strong> {whoisData.domainContactEmail || "N/A"}</p>
+      <p><strong>Contact Email:</strong> <a href={`mailto:${whoisData.contactEmail}`}>{whoisData.contactEmail || "N/A"}</a></p>
     </div>
   {/if}
 </div>
+
 
