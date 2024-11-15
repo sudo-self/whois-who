@@ -78,6 +78,11 @@
     color: red;
     font-weight: bold;
   }
+
+h3 {
+ color: #ff3e00;
+}
+
 </style>
 
 <div class="container">
