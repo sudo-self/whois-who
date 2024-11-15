@@ -22,8 +22,13 @@
 </main>
 
 <footer class="footer">
-  <p>whois-who.vercel.app</p>
+  <p>
+    <a href="https://whois-who.vercel.app" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+      whois-who.vercel.app
+    </a>
+  </p>
 </footer>
+
 
 <style>
   :global(body) {
