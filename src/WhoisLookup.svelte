@@ -129,9 +129,9 @@
 
       <p><strong>Registrar Abuse Contact Email:</strong> {whoisData.registrarAbuseContactEmail || "N/A"}</p>
       <p><strong>Registrar Abuse Contact Phone:</strong> {whoisData.registrarAbuseContactPhone || "N/A"}</p>
-      <p><strong>Contact Email:</strong> <a href={`mailto:${whoisData.contactEmail}`}>{whoisData.contactEmail || "N/A"}</a></p>
     </div>
   {/if}
 </div>
+
 
 
