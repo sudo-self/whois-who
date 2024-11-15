@@ -67,6 +67,7 @@
 </style>
 
 <div class="container">
+<a class="github-button" href="https://github.com/sudo-self/whois-who" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/whois-who on GitHub">Star</a>
   <h1>.org .net .io .co .xyz</h1>
 
   <input type="text" bind:value={domain} placeholder="Enter a domain" />
