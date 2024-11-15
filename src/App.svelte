@@ -117,7 +117,7 @@ h1 {
     font-weight: 100;
   }
 
-  /* Make the page responsive */
+
   @media (max-width: 640px) {
     h1 {
       font-size: 2.5em;
