@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://whois.jessejesse.com/sitemap-file.xml
