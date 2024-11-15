@@ -56,7 +56,7 @@ h1 {
   font-size: 4em;
   font-weight: 100;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, #e03e00, #e67e00); /* Darker shades of orange */
+  background: linear-gradient(90deg, #e03e00, #e67e00); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
