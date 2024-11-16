@@ -26,7 +26,7 @@
       }
 
       const data = await response.json();
-      console.log(data); 
+      console.log(data);
 
       if (data && data.WhoisRecord) {
         whoisData = data.WhoisRecord;
@@ -49,6 +49,9 @@
     const diffTime = today - created;
     return Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
   };
+
+  // Helper function to return a fallback value if data is missing
+  const getDataOrNA = (data) => data || "N/A";
 </script>
 
 <style>
@@ -79,10 +82,14 @@
     font-weight: bold;
   }
 
-h3 {
- color: #ff3e00;
-}
+  h3 {
+    color: #ff3e00;
+  }
 
+  ul {
+    text-align: left;
+    padding-left: 20px;
+  }
 </style>
 
 <div class="container">
@@ -101,22 +108,22 @@ h3 {
   {#if whoisData}
     <div class="whois-container">
       <h3>WHOIS data for {domain}</h3>
-      <p><strong>Domain Name:</strong> {whoisData.domainName || "N/A"}</p>
-      <p><strong>Registrar:</strong> {whoisData.registrarName || "N/A"}</p>
-      <p><strong>Registrar IANA ID:</strong> {whoisData.registrarIanaID || "N/A"}</p>
-      <p><strong>Registrar WHOIS Server:</strong> {whoisData.registrarWhoisServer || "N/A"}</p>
-      <p><strong>Registrar URL:</strong> <a href={whoisData.registrarURL || "#"} target="_blank">{whoisData.registrarURL || "N/A"}</a></p>
-      <p><strong>Created Date:</strong> {whoisData.createdDate || "N/A"}</p>
-      <p><strong>Updated Date:</strong> {whoisData.updatedDate || "N/A"}</p>
-      <p><strong>Expires Date:</strong> {whoisData.expiresDate || "N/A"}</p>
-      <p><strong>Domain Status:</strong> {whoisData.domainStatus || "N/A"}</p>
+      <p><strong>Domain Name:</strong> {getDataOrNA(whoisData.domainName)}</p>
+      <p><strong>Registrar:</strong> {getDataOrNA(whoisData.registrarName)}</p>
+      <p><strong>Registrar IANA ID:</strong> {getDataOrNA(whoisData.registrarIanaID)}</p>
+      <p><strong>Registrar WHOIS Server:</strong> {getDataOrNA(whoisData.registrarWhoisServer)}</p>
+      <p><strong>Registrar URL:</strong> <a href={whoisData.registrarURL || "#"} target="_blank">{getDataOrNA(whoisData.registrarURL)}</a></p>
+      <p><strong>Created Date:</strong> {getDataOrNA(whoisData.createdDate)}</p>
+      <p><strong>Updated Date:</strong> {getDataOrNA(whoisData.updatedDate)}</p>
+      <p><strong>Expires Date:</strong> {getDataOrNA(whoisData.expiresDate)}</p>
+      <p><strong>Domain Status:</strong> {getDataOrNA(whoisData.domainStatus)}</p>
 
       {#if whoisData.createdDate}
         <p><strong>Days Old:</strong> {getDaysOld(whoisData.createdDate)} days</p>
       {/if}
 
-      <p><strong>Country:</strong> {whoisData.registrarCountry || "N/A"}</p>
-      <p><strong>State/Province:</strong> {whoisData.registrarState || "N/A"}</p>
+      <p><strong>Country:</strong> {getDataOrNA(whoisData.registrarCountry)}</p>
+      <p><strong>State/Province:</strong> {getDataOrNA(whoisData.registrarState)}</p>
 
       <p><strong>Name Servers:</strong></p>
       {#if whoisData.nameServers?.length}
@@ -129,9 +136,9 @@ h3 {
         <p>No name servers found</p>
       {/if}
 
-      <p><strong>Registrar Abuse Contact Email:</strong> {whoisData.registrarAbuseContactEmail || "N/A"}</p>
-      <p><strong>Registrar Abuse Contact Phone:</strong> {whoisData.registrarAbuseContactPhone || "N/A"}</p>
-      <p><strong>Domain Contact Email:</strong> {whoisData.domainContactEmail || "N/A"}</p>
+      <p><strong>Registrar Abuse Contact Email:</strong> {getDataOrNA(whoisData.registrarAbuseContactEmail)}</p>
+      <p><strong>Registrar Abuse Contact Phone:</strong> {getDataOrNA(whoisData.registrarAbuseContactPhone)}</p>
+      <p><strong>Domain Contact Email:</strong> {getDataOrNA(whoisData.domainContactEmail)}</p>
     </div>
   {/if}
 </div>
