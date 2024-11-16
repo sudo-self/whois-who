@@ -26,7 +26,6 @@
       }
 
       const data = await response.json();
-      console.log(data);
 
       if (data && data.WhoisRecord) {
         whoisData = data.WhoisRecord;
@@ -50,7 +49,6 @@
     return Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
   };
 
-  // Helper function to return a fallback value if data is missing
   const getDataOrNA = (data) => data || "N/A";
 </script>
 
@@ -93,8 +91,7 @@
 </style>
 
 <div class="container">
-  <a class="github-button" href="https://github.com/sudo-self/whois-who" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/whois-who on GitHub">Star</a>
-  <h1>.org .net .io .co .xyz .gg .ai</h1>
+  <h1>WHOIS Lookup</h1>
 
   <input type="text" bind:value={domain} placeholder="Enter a domain name" />
   <button on:click={fetchWhoisData} disabled={loading}>
@@ -107,25 +104,19 @@
 
   {#if whoisData}
     <div class="whois-container">
-      <h3>WHOIS data for {domain}</h3>
-      <p><strong>Domain Name:</strong> {getDataOrNA(whoisData.domainName)}</p>
-      <p><strong>Registrar:</strong> {getDataOrNA(whoisData.registrarName)}</p>
-      <p><strong>Registrar IANA ID:</strong> {getDataOrNA(whoisData.registrarIanaID)}</p>
-      <p><strong>Registrar WHOIS Server:</strong> {getDataOrNA(whoisData.registrarWhoisServer)}</p>
-      <p><strong>Registrar URL:</strong> <a href={whoisData.registrarURL || "#"} target="_blank">{getDataOrNA(whoisData.registrarURL)}</a></p>
-      <p><strong>Created Date:</strong> {getDataOrNA(whoisData.createdDate)}</p>
-      <p><strong>Updated Date:</strong> {getDataOrNA(whoisData.updatedDate)}</p>
-      <p><strong>Expires Date:</strong> {getDataOrNA(whoisData.expiresDate)}</p>
-      <p><strong>Domain Status:</strong> {getDataOrNA(whoisData.domainStatus)}</p>
+      <h3>Parsed WHOIS Data</h3>
+      <p><strong>Parsed domain name:</strong> {getDataOrNA(whoisData.domainName)}</p>
+      <p><strong>Domain name extension:</strong> {getDataOrNA(whoisData.domainName.split('.').pop())}</p>
+      <p><strong>Estimated domain age:</strong> {whoisData.createdDate ? `${getDaysOld(whoisData.createdDate)} day(s)` : "N/A"}</p>
+      <p><strong>Contact email:</strong> {getDataOrNA(whoisData.registrarAbuseContactEmail)}</p>
+      <p><strong>Created date:</strong> {getDataOrNA(whoisData.createdDate)}</p>
+      <p><strong>Updated date:</strong> {getDataOrNA(whoisData.updatedDate)}</p>
+      <p><strong>Expires date:</strong> {getDataOrNA(whoisData.expiresDate)}</p>
+      <p><strong>Registrar name:</strong> {getDataOrNA(whoisData.registrarName)}</p>
+      <p><strong>Registrar Internet Assigned Numbers Authority ID:</strong> {getDataOrNA(whoisData.registrarIanaID)}</p>
+      <p><strong>Domain EPP status codes by ICANN list:</strong> {getDataOrNA(whoisData.status)}</p>
 
-      {#if whoisData.createdDate}
-        <p><strong>Days Old:</strong> {getDaysOld(whoisData.createdDate)} days</p>
-      {/if}
-
-      <p><strong>Country:</strong> {getDataOrNA(whoisData.registrarCountry)}</p>
-      <p><strong>State/Province:</strong> {getDataOrNA(whoisData.registrarState)}</p>
-
-      <p><strong>Name Servers:</strong></p>
+      <h3>Name Servers</h3>
       {#if whoisData.nameServers?.length}
         <ul>
           {#each whoisData.nameServers as nameServer}
@@ -135,13 +126,10 @@
       {:else}
         <p>No name servers found</p>
       {/if}
-
-      <p><strong>Registrar Abuse Contact Email:</strong> {getDataOrNA(whoisData.registrarAbuseContactEmail)}</p>
-      <p><strong>Registrar Abuse Contact Phone:</strong> {getDataOrNA(whoisData.registrarAbuseContactPhone)}</p>
-      <p><strong>Domain Contact Email:</strong> {getDataOrNA(whoisData.domainContactEmail)}</p>
     </div>
   {/if}
 </div>
+
 
 
 
