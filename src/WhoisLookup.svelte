@@ -94,12 +94,12 @@
 
 <div class="container">
   <a class="github-button" href="https://github.com/sudo-self/whois-who" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/whois-who on GitHub">Star</a>
- 
-  <input type="text" bind:value={domain} placeholder="Enter a domain" />
+  <h1>&nbsp;.org .net .io .co .gg&nbsp;</h1>
+<input type="text" bind:value={domain} placeholder="Enter a domain" />
   <button on:click={fetchWhoisData} disabled={loading}>
     {loading ? 'Loading...' : 'Search'}
   </button>
- <h1>.org .net .io .co .gg</h1>
+
 
   {#if error}
     <p class="error">{error}</p>
