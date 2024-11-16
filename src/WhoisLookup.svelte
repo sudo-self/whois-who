@@ -94,7 +94,7 @@
 
 <div class="container">
   <a class="github-button" href="https://github.com/sudo-self/whois-who" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/whois-who on GitHub">Star</a>
-  <h1>.org .net .io .co .xyz .gg .ai</h1>
+  <h1>.org .net .io .co .gg</h1>
 
   <input type="text" bind:value={domain} placeholder="Enter a domain" />
   <button on:click={fetchWhoisData} disabled={loading}>
@@ -107,7 +107,7 @@
 
   {#if whoisData}
     <div class="whois-container">
-      <h3>WHOIS data for {domain}</h3>
+      <h3>WHOIS: {domain}</h3>
       <p><strong>Domain Name:</strong> {getDataOrNA(whoisData.domainName)}</p>
       <p><strong>Registrar:</strong> {getDataOrNA(whoisData.registrarName)}</p>
       <p><strong>Registrar IANA ID:</strong> {getDataOrNA(whoisData.registrarIanaID)}</p>
