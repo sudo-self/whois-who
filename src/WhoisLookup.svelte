@@ -16,7 +16,7 @@
     error = null;
 
     try {
-      const apiKey = "at_xo35mJkUEsqWfnGpOYa48pVjS46QC"; 
+      const apiKey = "at_xo35mJkUEsqWfnGpOYa48pVjS46QC";
       const response = await fetch(
         `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domain}&outputFormat=JSON`
       );
@@ -50,6 +50,7 @@
     return Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
   };
 
+  // Helper function to return a fallback value if data is missing
   const getDataOrNA = (data) => data || "N/A";
 </script>
 
@@ -138,9 +139,18 @@
       <p><strong>Registrar Abuse Contact Email:</strong> {getDataOrNA(whoisData.registrarAbuseContactEmail)}</p>
       <p><strong>Registrar Abuse Contact Phone:</strong> {getDataOrNA(whoisData.registrarAbuseContactPhone)}</p>
       <p><strong>Domain Contact Email:</strong> {getDataOrNA(whoisData.domainContactEmail)}</p>
+
+
+      <p><strong>Registrant Organization:</strong> {getDataOrNA(whoisData.registrant?.organization)}</p>
+      <p><strong>Registrant State:</strong> {getDataOrNA(whoisData.registrant?.state)}</p>
+      <p><strong>Registrant Country:</strong> {getDataOrNA(whoisData.registrant?.country)}</p>
+
+      <p><strong>Technical Contact:</strong> {getDataOrNA(whoisData.technicalContact?.organization)}</p>
+      <p><strong>Administrative Contact:</strong> {getDataOrNA(whoisData.administrativeContact?.organization)}</p>
     </div>
   {/if}
 </div>
+
 
 
 
