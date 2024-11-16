@@ -1,5 +1,5 @@
 
-## Whois-Who
+## Whois-Who Domain Lookup
 
 
 1. create a new svelte project
